@@ -11,12 +11,20 @@ export default function Cadastro() {
         image: "",
         password: ""
     })
+    const navigate = useNavigate()
   
     console.log(info)
 
     function Resgistrar(e){
         e.preventDefault();        
         const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up" , info)
+        promise.then(()=>{
+            navigate('/', {state: {password: info.password, email: info.email }});
+        });
+        promise.catch(error => {
+            alert(error + "deu xabu");
+         
+        });
 
     }
     return (
@@ -52,7 +60,7 @@ export default function Cadastro() {
                         required
                     />
               </Form>
-                <Botao><Cadastrar>Cadastrar</Cadastrar></Botao>
+                <Botao onClick={Resgistrar}><Cadastrar>Cadastrar</Cadastrar></Botao>
                 <LinkCadastro>Já tem uma conta? Faça login!</LinkCadastro>
             </CadastroLogo>
 
