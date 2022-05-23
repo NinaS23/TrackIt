@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-export default function Footer(){
-    return(
+export default function Footer() {
+    return (
         <>
-        <Fixed>
-        <Links>Hábitos</Links>
-        <Links>Histórico</Links>
-        </Fixed>
+            <Fixed>
+
+                <Links>Hábitos</Links>
+                hj
+                <Links>Histórico</Links>
+            </Fixed>
         </>
     )
 }
