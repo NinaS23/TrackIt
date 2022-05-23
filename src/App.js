@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter , Routes , Route } from "react-router-dom";
-import Cadastro from "./Cadastro";
-
-import Login from "./Login";
-import Today from "./Today";
+import Cadastro from "./pages/Cadastro";
+import Login from "./pages/Login";
+import Today from "./pages/Today";
 
 function App() {
   const [token , setToken] = useState("")
