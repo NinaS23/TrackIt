@@ -8,14 +8,16 @@ import UsuarioContext from "./providers/usuarioContext";
 
 function App() {
   const [token, setToken] = useState("")
+
   const [user, setUser] = useState(Usuario)
   function Usuario() {
-    if (localStorage.getItem('userInfo')) {
+    if (localStorage.getItem('object')) {
       const object = JSON.parse(localStorage.getItem('object'));
       return object;
     }
     return {};
   }
+
   return (
     <>
       <UsuarioContext.Provider value={{user , setUser}}>
