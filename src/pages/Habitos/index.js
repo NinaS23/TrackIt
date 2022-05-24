@@ -43,8 +43,7 @@ console.log(token)
         const promise = axios.post(URL, newHabito, config)
         promise.then((response) => {
             console.log(response.data)
-            setName("")
-            setDia([])
+            
 
         })
         promise.catch((erro) => {
