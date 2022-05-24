@@ -9,27 +9,27 @@ import UsuarioContext from "../../providers/usuarioContext.js";
 export default function Login() {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
-   
     const { token, setToken } = useContext(UsuarioContext);
     const navigate = useNavigate()
-    console.log(email)
-      console.log(token)
+    
     function EnviarUser() {
         const object = {
             email,
             password: senha
         }
         const config = {
-            Headers:{
+            headers:{
                 Authorization: `Bearer ${token}`
             }
 
         }
+        
         const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", object , config)
         promise.then(response => {
             console.log(response.data)
             setToken(response.data.token)
             navigate('/hoje');
+          
             
           
             

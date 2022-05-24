@@ -12,7 +12,6 @@ export default function Habitos() {
     const [name, setName] = useState("")
     const [etapa, setEtapa] = useState(1)
     const [dia, setDia] = useState([])
-    const { token } = useContext(UsuarioContext);
     const [domingo, setDomingo] = useState(false);
     const [segunda, setSegunda] = useState(false);
     const [terca, setTerca] = useState(false);
@@ -20,22 +19,24 @@ export default function Habitos() {
     const [quinta, setQuinta] = useState(false);
     const [sexta, setSexta] = useState(false);
     const [sabado, setSabado] = useState(false);
-
+    const { token } = useContext(UsuarioContext)
     console.log(token)
     let diaSemana = [...dia];
 
 
     const config = {
-        headers: {
+        headers:{
             Authorization: `Bearer ${token}`
         }
-    }
 
+    }
+    console.log(config)
+console.log(token)
 
     function EnviarHabito() {
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
         const newHabito = {
-            name: name,
+            name,
             days: dia
         }
         console.log(newHabito)
