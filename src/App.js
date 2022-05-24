@@ -9,24 +9,17 @@ import UsuarioContext from "./providers/usuarioContext";
 function App() {
   const [token, setToken] = useState("")
 
-  const [user, setUser] = useState(Usuario)
-  function Usuario() {
-    if (localStorage.getItem('object')) {
-      const object = JSON.parse(localStorage.getItem('object'));
-      return object;
-    }
-    return {};
-  }
+console.log(token)
 
   return (
     <>
-      <UsuarioContext.Provider value={{user , setUser}}>
+      <UsuarioContext.Provider value={{token , setToken}}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login token={token} setToken={setToken}/>} />
+            <Route path="/" element={<Login/>} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/hoje" element={<Today />} />
-            <Route path="/habitos" element={<Habitos />} />
+            <Route path="/habitos" element={<Habitos  />} />
           </Routes>
         </BrowserRouter>
       </UsuarioContext.Provider>

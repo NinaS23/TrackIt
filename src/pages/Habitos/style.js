@@ -83,26 +83,7 @@ display: flex;
 
 
 `
-const Dia = styled.div`
-width: 30px;
-height: 30px;
-background: #FFFFFF;
-border: 1px solid #D5D5D5;
-border-radius: 5px;
-display: flex;
-justify-content: center;
-align-items: center;
-margin-left: 2%;
-margin-top: 3%;
-h4{
-color: #DBDBDB;
-font-weight: 700;
-font-family: 'Lexend Deca';
-font-style: normal;
-font-size: 19.976px;
-line-height: 25px;
-}
-`
+
 
 
 const Cancelar = styled.button`
@@ -131,6 +112,124 @@ color: #666666;
 
 
 `
+const Domingo = styled.div`
+  font-family: "Lexend Deca";
+  background-color: ${(props) => props.background};
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: ${(props) => props.color};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  margin-right: 4px;
+  text-align: center;
+`;
+
+const Segunda = styled.div`
+  font-family: "Lexend Deca";
+  background-color: ${(props) => props.background};
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: ${(props) => props.color};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  margin-right: 4px;
+  text-align: center;
+`;
+
+const Terca = styled.div`
+  font-family: "Lexend Deca";
+  background-color: ${(props) => props.background};
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: ${(props) => props.color};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  margin-right: 4px;
+  text-align: center;
+`;
+
+const Quarta = styled.div`
+  font-family: "Lexend Deca";
+  background-color: ${(props) => props.background};
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: ${(props) => props.color};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  margin-right: 4px;
+  text-align: center;
+`;
+
+const Quinta = styled.div`
+  font-family: "Lexend Deca";
+  background-color: ${(props) => props.background};
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: ${(props) => props.color};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  margin-right: 4px;
+  text-align: center;
+`;
+
+const Sexta = styled.div`
+  font-family: "Lexend Deca";
+  background-color: ${(props) => props.background};
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: ${(props) => props.color};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  margin-right: 4px;
+  text-align: center;
+`;
+
+const Sabado = styled.div`
+  font-family: "Lexend Deca";
+  background-color: ${(props) => props.background};
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: ${(props) => props.color};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  margin-right: 4px;
+  text-align: center;
+`;
 
 
 export{
@@ -139,8 +238,14 @@ CreatHabit,
 Habit,
 Input,
 Semana,
-Dia,
+Sabado,
 Cancelar,
-Legenda
+Legenda,
+Segunda,
+Sexta,
+Domingo,
+Quarta,
+Quinta,
+Terca
 
 }

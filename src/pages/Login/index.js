@@ -6,12 +6,14 @@ import UsuarioContext from "../../providers/usuarioContext.js";
 
 
 
-export default function Login({ token, setToken }) {
+export default function Login() {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
-    const { setUser } = useContext(UsuarioContext);
+   
+    const { token, setToken } = useContext(UsuarioContext);
     const navigate = useNavigate()
     console.log(email)
+      console.log(token)
     function EnviarUser() {
         const object = {
             email,
@@ -28,7 +30,9 @@ export default function Login({ token, setToken }) {
             console.log(response.data)
             setToken(response.data.token)
             navigate('/hoje');
-            setUser(Object)
+            
+          
+            
         
         });
         promise.catch((erro) => {
