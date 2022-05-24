@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 import { LogoCenter, Logo, Input, Botao, Entrar, LinkLogin } from "./style.js";
+import UsuarioContext from "../../providers/usuarioContext.js";
 
 
 
 export default function Login({ token, setToken }) {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
+    const { setUser } = useContext(UsuarioContext);
     const navigate = useNavigate()
     console.log(email)
     function EnviarUser() {
@@ -26,6 +28,7 @@ export default function Login({ token, setToken }) {
             console.log(response.data)
             setToken(response.data.token)
             navigate('/hoje');
+            setUser(Object)
         
         });
         promise.catch((erro) => {
