@@ -25,13 +25,13 @@ export default function Habitos() {
 
 
     const config = {
-        headers:{
+        headers: {
             Authorization: `Bearer ${token}`
         }
 
     }
     console.log(config)
-console.log(token)
+    console.log(token)
 
     function EnviarHabito() {
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
@@ -43,7 +43,7 @@ console.log(token)
         const promise = axios.post(URL, newHabito, config)
         promise.then((response) => {
             console.log(response.data)
-            
+
 
         })
         promise.catch((erro) => {
@@ -53,6 +53,18 @@ console.log(token)
     }
     useEffect(() => EnviarHabito());
 
+    useEffect(() => {
+      
+             const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
+             const promise = axios.get(URL , config)
+             promise.then((response)=>{
+                 console.log(response.data)
+             })
+             promise.catch((erro)=>{
+                 console.log(erro)
+             })
+        
+    }, [])
 
     if (etapa === 1) {
 
