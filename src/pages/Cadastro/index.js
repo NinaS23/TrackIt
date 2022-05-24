@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { CadastroLogo, LogoCadastro, Input, Botao, Cadastrar, LinkCadastro , Form } from "./style.js";
 
 
@@ -61,8 +61,11 @@ export default function Cadastro() {
                     />
               </Form>
                 <Botao onClick={Resgistrar}><Cadastrar>Cadastrar</Cadastrar></Botao>
-                <LinkCadastro>Já tem uma conta? Faça login!</LinkCadastro>
+                <Link to={"/"}>
+                    <LinkCadastro>Não tem uma conta? Cadastre-se!</LinkCadastro>
+                </Link>
             </CadastroLogo>
+           
 
         </>
     )

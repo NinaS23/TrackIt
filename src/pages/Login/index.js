@@ -15,7 +15,13 @@ export default function Login({ token, setToken }) {
             email,
             password: senha
         }
-        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", object)
+        const config = {
+            Headers:{
+                Authorization: `Bearer ${token}`
+            }
+
+        }
+        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", object , config)
         promise.then(response => {
             console.log(response.data)
             setToken(response.data.token)
