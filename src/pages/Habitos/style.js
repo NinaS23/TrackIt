@@ -80,20 +80,50 @@ border-radius: 5px;
 `
 const Semana= styled.div`
 display: flex;
-
+margin-top:5%;
 
 `
 
+const Salvar = styled.button`
 
+width: 84px;
+height: 35px;
+left: 257px;
+top: 277px;
+border-style:none;
+background:#52B6FF;
+border-radius: 4.63636px;
+  h3{
+    font-family: 'Lexend Deca';
+font-style: normal;
+font-weight: 400;
+font-size: 15.976px;
+line-height: 20px;
+text-align: center;
+color: #FFFFFF;
+margin-top:1%
+  }
+`
 
 const Cancelar = styled.button`
 width: 84px;
 height: 35px;
 left: 257px;
 top: 277px;
-
-background: #52B6FF;
+border-style:none;
+background: #FFFFFF;
 border-radius: 4.63636px;
+margin-left: 15%;
+h3{
+    font-family: 'Lexend Deca';
+font-style: normal;
+font-weight: 400;
+font-size: 15.976px;
+line-height: 20px;
+text-align: center;
+color: #52B6FF;
+margin-top:1%
+  }
 
 `
 
@@ -230,8 +260,26 @@ const Sabado = styled.div`
   margin-right: 4px;
   text-align: center;
 `;
+const Separar = styled.div`
+display: flex;
+justify-content:flex-end;
+margin-top: 14%;
+`
+const Tabela = styled.div`
+display: flex;
+flex-direction: column;
+margin-top:7px;
+background-color: E5E5E5;
+img{
+margin-top :5%;
+width:13px;
+height: 15px;
+margin-left: 98%;
+  
+}
 
 
+`
 export{
 Habito,
 CreatHabit,
@@ -246,6 +294,9 @@ Sexta,
 Domingo,
 Quarta,
 Quinta,
-Terca
+Terca,
+Salvar,
+Separar,
+Tabela
 
 }
