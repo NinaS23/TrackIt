@@ -4,7 +4,7 @@ import Footer from "../../componentes/Footer/index.js";
 import Header from "../../componentes/Header/index.js";
 import UsuarioContext from "../../providers/usuarioContext.js";
 
-import { Habito,Salvar, Separar, Tabela , CreatHabit, Habit, Input, Semana, Cancelar, Legenda, Domingo, Segunda, Terca, Quarta, Quinta, Sexta, Sabado } from "./style.js";
+import { Habito,HabitoNovo, Salvar, Separar, Tabela , CreatHabit, Habit, Input, Semana, Cancelar, Legenda, Domingo, Segunda, Terca, Quarta, Quinta, Sexta, Sabado } from "./style.js";
 
 
 
@@ -20,6 +20,7 @@ export default function Habitos() {
     const [quinta, setQuinta] = useState(false);
     const [sexta, setSexta] = useState(false);
     const [sabado, setSabado] = useState(false);
+    const [mudar , setMudar ] = useState(false)
     const { token } = useContext(UsuarioContext)
     console.log(token)
     let diaSemana = [...dia];
@@ -44,6 +45,9 @@ export default function Habitos() {
         const promise = axios.post(URL, newHabito, config)
         promise.then((response) => {
             console.log(response.data)
+            setEtapa(2)
+            setMudar(true)
+          
 
 
         })
@@ -200,6 +204,22 @@ export default function Habitos() {
             </>
         )
     }
+
+    function CriarNovoHabito(){
+        return (
+            <HabitoNovo>
+                    <Input type="text" placeholder="Nome do Habito" value={name} onChange={(e) => setName(e.target.value)}></Input>
+                    <Semana>
+                        {MontarSemana}
+                    </Semana>
+                    <Separar>
+                        <Salvar><h3>Cancelar</h3></Salvar>
+                        <Cancelar onClick={() => EnviarHabito()}><h3>Salvar</h3></Cancelar>
+                    </Separar>
+                </HabitoNovo>
+        )
+    }
+    
     const MontarSemana = DiasDaSemana()
     function HabitosFinais({nome , dias}){
         return(
@@ -253,8 +273,8 @@ export default function Habitos() {
         </Tabela>
         )
     }
-
-    if (habitoFeito.length === 0) {
+    const  NovaTabelaDeHabito = CriarNovoHabito()
+    if (habitoFeito.length === 0 || etapa === 1) {
 
         return (
             <>
@@ -281,48 +301,32 @@ export default function Habitos() {
             </>
         )
     }
-    if (habitoFeito.length !== 0) {
+    if ( mudar === true || habitoFeito.length !== 0) {
 
         return (
             <>
-                {/* <Header />
+                <Header />
                 <Habito>
                     <CreatHabit>
                         <h2>Meus Habitos</h2>
-                        <button ><h3>+</h3></button>
+                        <button onClick={() => {
+                            setEtapa(1);
+                            CriarNovoHabito();
+                        }} ><h3>+</h3></button>
                     </CreatHabit>
-                   {habitoFeito.map((habito , index)=>{
-                       return(
-                          <HabitosFinais 
-                          nome={habito.name}
-                          dias={habito.days}
-                          />
-                       )
-                   })}
+                    {habitoFeito.map((habito, index) => {
+                        return (
+                            <HabitosFinais
+                                nome={habito.name}
+                                dias={habito.days}
+                            />
+                        )
+                    })}
                 </Habito>
                 <Footer />
 
- */}
-    <Header />
-                <Habito>
-                    <CreatHabit>
-                        <h2>Meus Habitos</h2>
-                        <button ><h3>+</h3></button>
-                    </CreatHabit>
-                    <Habit>
-                        <Input type="text" placeholder="Nome do Habito" value={name} onChange={(e) => setName(e.target.value)}></Input>
-                        <Semana>
-                            {MontarSemana}
-                        </Semana>
-                        <Separar>
-                            <Salvar><h3>Cancelar</h3></Salvar>
-                            <Cancelar onClick={() => EnviarHabito()}><h3>Salvar</h3></Cancelar>
-                        </Separar>
-                    </Habit>
-                    <Legenda>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Legenda>
-                </Habito>
-                <Footer />
 
+    
             </>
         )
     }

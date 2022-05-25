@@ -3,12 +3,21 @@ import styled from "styled-components";
 
 
 const Habito = styled.div`
-
-margin-top: 30%;
+margin-top:30%;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+`
+
+const HabitoNovo = styled.div`
+
+margin-top: 10%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
 `
 const CreatHabit = styled.div`
 width: 340px;
@@ -297,6 +306,7 @@ Quinta,
 Terca,
 Salvar,
 Separar,
-Tabela
+Tabela,
+HabitoNovo
 
 }
