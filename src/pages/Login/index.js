@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
+
+import { ThreeDots } from "react-loader-spinner";
 import { LogoCenter, Logo, Input, Botao, Entrar, LinkLogin } from "./style.js";
 import UsuarioContext from "../../providers/usuarioContext.js";
 
@@ -9,10 +11,13 @@ import UsuarioContext from "../../providers/usuarioContext.js";
 export default function Login() {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
+    const [work , setWork] = useState(false)
     const { token, setToken } = useContext(UsuarioContext);
     const navigate = useNavigate()
     
-    function EnviarUser() {
+    function EnviarUser(e) {
+        e.preventDefault();
+        setWork(true);
         const object = {
             email,
             password: senha
@@ -29,10 +34,7 @@ export default function Login() {
             console.log(response.data)
             setToken(response.data.token)
             navigate('/hoje');
-          
-            
-          
-            
+            setWork(false)
         
         });
         promise.catch((erro) => {
@@ -40,7 +42,7 @@ export default function Login() {
             alert(erro)
         })
     }
-
+if(work === false){
     return (
         <>
             <LogoCenter>
@@ -56,6 +58,24 @@ export default function Login() {
 
         </>
     )
-
+    }
+    if(work === true){
+        return(
+        <>
+        <LogoCenter>
+            <Logo src="assets/imgs/logo.png" alt="logo trackit" />
+            <Input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} disabled={work}/>
+            <Input type="text" placeholder="senha" value={senha} onChange={(e) => setSenha(e.target.value)}  disabled={work}/>
+            <Botao>
+          <ThreeDots color="#FFFFFF" width={50} />
+        </Botao>
+            <Link to={"/cadastro"}>
+                <LinkLogin>Não tem uma conta? Cadastre-se!</LinkLogin>
+            </Link>
+        </LogoCenter>
+        </>
+)
+    
+    }
 
 }

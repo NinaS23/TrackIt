@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
 import { useContext, useEffect, useState } from "react";
 import Footer from "../../componentes/Footer/index.js";
 import Header from "../../componentes/Header/index.js";
@@ -33,11 +34,12 @@ export default function Habitos() {
     const [sexta, setSexta] = useState(false);
     const [sabado, setSabado] = useState(false);
     const [mudar , setMudar ] = useState(false)
+    const [load , setLoad] = useState(false)
     const { token } = useContext(UsuarioContext)
     console.log(token)
     let diaSemana = [...dia];
 
-
+console.log(load)
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -48,6 +50,8 @@ export default function Habitos() {
     console.log(token)
 
     function EnviarHabito() {
+      
+        setLoad(true)
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
         const newHabito = {
             name: name,
@@ -60,6 +64,7 @@ export default function Habitos() {
             setEtapa(2)
             setMudar(true)
             setName("")
+            setLoad(false)
           
 
 
@@ -349,6 +354,32 @@ if(etapa === 0){
                         <Separar>
                             <Salvar><h3>Cancelar</h3></Salvar>
                             <Cancelar onClick={() => EnviarHabito()}><h3>Salvar</h3></Cancelar>
+                        </Separar>
+                    </Habit>
+                    <Legenda>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Legenda>
+                </Habito>
+                <Footer />
+
+            </>
+        )
+    }
+    if(load === true){
+        return (
+            <>
+                <Header />
+                <Habito>
+                    <CreatHabit>
+                        <h2>Meus Habitos</h2>
+                        <button ><h3>+</h3></button>
+                    </CreatHabit>
+                    <Habit>
+                        <Input type="text" placeholder="Nome do Habito" value={name} onChange={(e) => setName(e.target.value)}></Input>
+                        <Semana>
+                            {MontarSemana}
+                        </Semana>
+                        <Separar>
+                            <Salvar> <ThreeDots color="#FFFFFF" width={50} /></Salvar>
+                            <Cancelar > <ThreeDots color="#FFFFFF" width={50} /></Cancelar>
                         </Separar>
                     </Habit>
                     <Legenda>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Legenda>
