@@ -4,13 +4,25 @@ import Footer from "../../componentes/Footer/index.js";
 import Header from "../../componentes/Header/index.js";
 import UsuarioContext from "../../providers/usuarioContext.js";
 
-import { Habito,HabitoNovo, Salvar, Separar, Tabela , CreatHabit, Habit, Input, Semana, Cancelar, Legenda, Domingo, Segunda, Terca, Quarta, Quinta, Sexta, Sabado } from "./style.js";
+import { Habito,HabitoNovo, 
+    Salvar, Separar, Tabela , 
+    CreatHabit, Habit,
+     Input, Semana, Cancelar,
+      Legenda, Domingo, Segunda, 
+      Terca, Quarta,
+     Quinta, Sexta, Sabado,
+     CaixaSubTitulo,
+     SubTitulo ,
+     Botao,
+     Container
+    } from "./style.js";
 
 
 
 export default function Habitos() {
     const [name, setName] = useState("")
-    const [etapa, setEtapa] = useState(1)
+    const [etapa, setEtapa] = useState(0)
+    const [remove , setRemove] = useState(0)
     const [habitoFeito , setHabitoFeito] = useState([])
     const [dia, setDia] = useState([])
     const [domingo, setDomingo] = useState(false);
@@ -47,6 +59,7 @@ export default function Habitos() {
             console.log(response.data)
             setEtapa(2)
             setMudar(true)
+            setName("")
           
 
 
@@ -220,8 +233,30 @@ export default function Habitos() {
         )
     }
     
+    function RemoveHabito(IdHabit){
+        const mostrar = window.confirm(
+            "Tem certeza que deseja apagar o hábito?"
+          );
+          if (mostrar) {
+            const promise = axios.delete(
+              `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${IdHabit}`,
+              config
+            );
+            promise.then((resp)=>{
+                console.log(resp)
+                setRemove([IdHabit])
+            });
+            promise.catch((erro) =>
+              alert(" Tente novamente Deletar o Habito Novamente por Favor")
+            
+            );
+          }
+    }
+
+
     const MontarSemana = DiasDaSemana()
-    function HabitosFinais({nome , dias}){
+
+    function HabitosFinais({nome , dias, id}){
         return(
             <Tabela>
             <h2>{nome}</h2>
@@ -269,11 +304,33 @@ export default function Habitos() {
                       S
                     </Sabado>
             </Semana>
-            <img src="assets/imgs/trash.png" alt="lixo" />
+            <img  onClick={() => RemoveHabito(id.id)} src="assets/imgs/trash.png" alt="lixo" />
         </Tabela>
         )
     }
-    const  NovaTabelaDeHabito = CriarNovoHabito()
+ 
+
+
+
+
+if(etapa === 0){
+    return(
+        <>
+         <Header />
+        <Container>
+            <CaixaSubTitulo>
+                <SubTitulo>Meus hábitos</SubTitulo>
+                <Botao onClick={() => setEtapa(1)} >+</Botao>
+            </CaixaSubTitulo>
+            <Legenda>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Legenda>
+        </Container>
+        <Footer />
+        </>
+ 
+    )
+}
+
+    
     if (habitoFeito.length === 0 || etapa === 1) {
 
         return (
@@ -319,6 +376,7 @@ export default function Habitos() {
                             <HabitosFinais
                                 nome={habito.name}
                                 dias={habito.days}
+                                id={habito.id}
                             />
                         )
                     })}

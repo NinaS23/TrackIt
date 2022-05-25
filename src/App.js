@@ -18,8 +18,9 @@ console.log(token)
           <Routes>
             <Route path="/" element={<Login/>} />
             <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/hoje" element={<Today />} />
             <Route path="/habitos" element={<Habitos  />} />
+            <Route path="/hoje" element={<Today />} />
+          
           </Routes>
         </BrowserRouter>
       </UsuarioContext.Provider>
