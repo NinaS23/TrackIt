@@ -4,7 +4,7 @@ import Footer from "../../componentes/Footer/index.js";
 import Header from "../../componentes/Header/index.js";
 import UsuarioContext from "../../providers/usuarioContext.js";
 import Habitos from "../Habitos/index.js";
-import { Container, SubTitulo, False , Legenda , Hoje , ContainerHOje , Titulo ,Imagem , Div} from "./style.js";
+import { Container, SubTitulo, False ,SequenciaTrue,  Sequencia, Legenda , Hoje , ContainerHOje , Titulo ,Imagem , Div} from "./style.js";
 
 export default function Today() {
     const [tela, setTela] = useState(true)
@@ -41,6 +41,14 @@ export default function Today() {
         })
     }, [])
 
+
+
+
+
+
+
+
+
     function Selecionado( indexDia){
 
         console.log(indexDia)
@@ -61,6 +69,11 @@ export default function Today() {
         setToday(novoMap)
     }
 
+
+
+
+
+
     function RetornaTarefas({done , atual , maiorSequencia , name , index}){
        
         if (done === false) {
@@ -69,10 +82,10 @@ export default function Today() {
                     <Titulo>
                         {name}
                     </Titulo>
-                    <h4>
+                    <Sequencia>
                         Sequência atual: {atual} dias
                         recorde: {maiorSequencia} dias
-                    </h4>
+                    </Sequencia>
 
                     <False onClick={() => Selecionado(index)}>
                         <Imagem src="assets/imgs/check.png" alt="check" />
@@ -86,10 +99,10 @@ export default function Today() {
                 <Titulo>
                     {name}
                 </Titulo>
-                <h4>
+                <SequenciaTrue>
                     Sequência atual: {atual} dias
                     recorde: {maiorSequencia} dias
-                </h4>
+                </SequenciaTrue>
 
                 <Div>
                     <Imagem src="assets/imgs/check.png" alt="check" />
@@ -100,6 +113,10 @@ export default function Today() {
     }
 
     
+
+
+
+
 console.log(today)
 
     if (tela === true) {

@@ -64,8 +64,14 @@ width: 340px;
 background-color:  #E5E5E5;
 margin-top:3%;
 padding-bottom: 50px;
-h4{
- width: 146px;
+
+
+`
+
+
+const Sequencia = styled.h4`
+
+width: 146px;
 height: 32px;
 margin-top:15%;
 font-family: 'Lexend Deca';
@@ -75,9 +81,23 @@ font-size: 12.976px;
 line-height: 16px;
 color: #666666;
 margin-left: 3%;
-}
 
 `
+const SequenciaTrue = styled.h4`
+width: 146px;
+height: 32px;
+margin-top:15%;
+font-family: 'Lexend Deca';
+font-style: normal;
+font-weight: 400;
+font-size: 12.976px;
+line-height: 16px;
+color: #8FC549;
+margin-left: 3%;
+
+
+`
+
 const False = styled.div`
 
 width: 59px;
@@ -145,5 +165,7 @@ export{
     Titulo,
     Imagem,
     Div,
-    False
+    False,
+    Sequencia,
+    SequenciaTrue
     }
