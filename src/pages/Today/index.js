@@ -11,6 +11,7 @@ export default function Today() {
     const [doneState , setDoneState] = useState(false)
     const [today , setToday] = useState([])
     const { token } = useContext(UsuarioContext)
+  
     const [tarefa , setTarefa] = useState(0)
 
     
@@ -35,6 +36,7 @@ export default function Today() {
         promise.then((response) => {
             console.log(response.data)
             setToday(response.data)
+          
         });
         promise.catch((erro) => {
             console.log(erro)

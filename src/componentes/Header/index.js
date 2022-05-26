@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import ImageContext from "../../providers/imageContext";
 
 export default function Header() {
+    const { img } = useContext(ImageContext)
+    console.log(img)
     return (
         <Topo>
             <Titulo>trackit</Titulo>
-            <Image src="" alt="" />
+            <Image src={img} alt="foto de perfil" />
         </Topo>
     )
 }

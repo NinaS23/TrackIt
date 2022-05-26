@@ -5,6 +5,7 @@ import axios from "axios"
 import { ThreeDots } from "react-loader-spinner";
 import { LogoCenter, Logo, Input, Botao, Entrar, LinkLogin } from "./style.js";
 import UsuarioContext from "../../providers/usuarioContext.js";
+import ImageContext from "../../providers/imageContext.js";
 
 
 
@@ -13,6 +14,7 @@ export default function Login() {
     const [senha, setSenha] = useState("")
     const [work , setWork] = useState(false)
     const { token, setToken } = useContext(UsuarioContext);
+    const { setImg } = useContext(ImageContext)
     const navigate = useNavigate()
     
     function EnviarUser(e) {
@@ -33,6 +35,7 @@ export default function Login() {
         promise.then(response => {
             console.log(response.data)
             setToken(response.data.token)
+            setImg(response.data.image)
             navigate('/hoje');
             setWork(false)
         
