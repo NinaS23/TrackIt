@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
+import Footer from "../../componentes/Footer";
+import Header from "../../componentes/Header";
 import UsuarioContext from "../../providers/usuarioContext";
-
+import { Corpo , Titulo , SubTitulo} from "./style.js";
 export default function Historico(){
     const { token } = useContext(UsuarioContext)
     const config = {
@@ -25,6 +27,20 @@ export default function Historico(){
 
 
     return(
-        <h2>sou historico</h2>
+     
+
+
+    <>
+      <Corpo>
+        <Header />
+        <Titulo>Histórico</Titulo>
+        <SubTitulo>Em breve você poderá ver o histórico dos seus hábitos aqui!</SubTitulo>
+        <Footer />
+      </Corpo>
+    </>
+
+
+
     )
 }
+
