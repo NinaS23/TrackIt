@@ -8,18 +8,18 @@ import { Container, SubTitulo, False ,SequenciaTrue,  Sequencia, Legenda , Hoje 
 
 export default function Today() {
     const [tela, setTela] = useState(true)
+    const [doneState , setDoneState] = useState(false)
     const [today , setToday] = useState([])
     const { token } = useContext(UsuarioContext)
-    const [cor , setCor] = useState(false)
-   
+    const [tarefa , setTarefa] = useState(0)
 
-
+    
     let data = new Date();
     let dia = String(data.getDate()).padStart(2, '0');
     let mes = String(data.getMonth() + 1).padStart(2, '0');
     let dataAtual = dia + '/' + mes;
 
-    console.log(dataAtual)
+   
 
     const config = {
         headers: {
@@ -42,6 +42,30 @@ export default function Today() {
     }, [])
 
 
+    useEffect(() => {
+        if(doneState === true){
+        const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${tarefa}/check`
+        const promise = axios.post(URL,{}, config)
+        promise.then((response) => {
+            console.log(response.data)
+            
+        });
+        promise.catch((erro) => {
+            console.log(erro)
+        })
+    }else{
+        const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${tarefa}/check`
+        const promise = axios.post(URL,{}, config)
+        promise.then((response) => {
+            console.log(response.data)
+            setDoneState(false)
+            
+        });
+        promise.catch((erro) => {
+            console.log(erro)
+        })
+    }
+    }, [])
 
 
 
@@ -49,9 +73,10 @@ export default function Today() {
 
 
 
-    function Selecionado( indexDia){
-
-        console.log(indexDia)
+    function Selecionado( indexDia,  id , feito){
+      
+       
+       
         let novoMap = today.map((tarefas , index)=>{
             if(index === indexDia){
                 return{
@@ -59,6 +84,7 @@ export default function Today() {
                        done:true
 
                 }
+                
             }else{
                 return{
                     ...tarefas
@@ -67,14 +93,16 @@ export default function Today() {
             
         })
         setToday(novoMap)
+       setTarefa(id)
+       setDoneState(true)
     }
 
+console.log(doneState)
 
 
 
 
-
-    function RetornaTarefas({done , atual , maiorSequencia , name , index}){
+    function RetornaTarefas({done , atual , maiorSequencia , name , index , id}){
        
         if (done === false) {
             return (
@@ -87,7 +115,7 @@ export default function Today() {
                         recorde: {maiorSequencia} dias
                     </Sequencia>
 
-                    <False onClick={() => Selecionado(index)}>
+                    <False onClick={() => Selecionado(index , id , done)}>
                         <Imagem src="assets/imgs/check.png" alt="check" />
                     </False>
                 </Hoje>
@@ -106,6 +134,7 @@ export default function Today() {
 
                 <Div>
                     <Imagem src="assets/imgs/check.png" alt="check" />
+                    
                 </Div>
             </Hoje>
             )
@@ -117,7 +146,7 @@ export default function Today() {
 
 
 
-console.log(today)
+
 
     if (tela === true) {
         return (
@@ -128,7 +157,7 @@ console.log(today)
                     <Legenda>Nenhum hábito concluído ainda</Legenda>
                     <ContainerHOje>
                         {today.map((item, index) => {
-                            console.log(item.done)
+                          
                        
                             return (
                                 <RetornaTarefas
@@ -137,6 +166,7 @@ console.log(today)
                                 maiorSequencia={item.highestSequence}
                                 name={item.name}
                                 index={index}
+                                id={item.id}
                                 />
                             )
                         

@@ -150,6 +150,7 @@ color: #666666;
 
 
 `
+
 const Imagem = styled.img`
 margin: 0 auto;
 
