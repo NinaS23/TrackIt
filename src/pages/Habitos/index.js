@@ -318,7 +318,7 @@ console.log(load)
 
 
 
-if(etapa === 0){
+if(habitoFeito.length === 0){
     return(
         <>
          <Header />
