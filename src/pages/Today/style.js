@@ -77,7 +77,9 @@ color: #666666;
 margin-left: 3%;
 }
 
-div{
+`
+const False = styled.div`
+
 width: 59px;
 height: 59px;
 background: #EBEBEB;
@@ -88,7 +90,19 @@ display: flex;
 justify-content: center;
 align-items: center;
 
-}
+`
+
+const Div = styled.div`
+width: 59px;
+height: 59px;
+background: #8FC549;
+border: 1px solid #E7E7E7;
+border-radius: 5px;
+margin-left:70%;
+display: flex;
+justify-content: center;
+align-items: center;
+
 `
 const ContainerHOje  = styled.div`
 display: flex;
@@ -129,5 +143,7 @@ export{
     Hoje,
     ContainerHOje,
     Titulo,
-    Imagem
+    Imagem,
+    Div,
+    False
     }
