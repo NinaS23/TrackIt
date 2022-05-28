@@ -6,12 +6,13 @@ import Historico from "./pages/Historico";
 import Login from "./pages/Login";
 import Today from "./pages/Today";
 import ImageContext from "./providers/imageContext";
+import PercentageContext from "./providers/percentageContext";
 import UsuarioContext from "./providers/usuarioContext";
 
 function App() {
   const [token, setToken] = useState("")
   const [img , setImg] = useState("")
-
+  const [perc , setPerc] = useState(0)
   console.log(token)
 
 
@@ -19,6 +20,7 @@ function App() {
     <>
 
       <UsuarioContext.Provider value={{ token, setToken }}>
+        <PercentageContext.Provider value={{perc , setPerc}}>
         <ImageContext.Provider value={{ img, setImg }}>
           <BrowserRouter>
             <Routes>
@@ -30,6 +32,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </ImageContext.Provider>
+        </PercentageContext.Provider>
       </UsuarioContext.Provider>
 
    

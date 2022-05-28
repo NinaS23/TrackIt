@@ -6,13 +6,14 @@ import UsuarioContext from "../../providers/usuarioContext.js";
 import Habitos from "../Habitos/index.js";
 import dayjs from "dayjs";
 import { Container, SubTitulo, False ,SequenciaTrue,  Sequencia, Legenda , Hoje , ContainerHOje , Titulo ,Imagem , Div} from "./style.js";
+import PercentageContext from "../../providers/percentageContext.js";
 
 export default function Today() {
     const [tela, setTela] = useState(true)
     const [doneState , setDoneState] = useState(false)
     const [today , setToday] = useState([])
     const { token } = useContext(UsuarioContext)
-  
+    const { setPerc , perc } = useContext(PercentageContext)
     const [tarefa , setTarefa] = useState(0)
 
     
@@ -37,6 +38,11 @@ export default function Today() {
         promise.then((response) => {
             console.log(response.data)
             setToday(response.data)
+            const porcentagem = (
+                (today.filter((habito) => habito.done).length / today.length) *
+                100
+              )
+              setPerc(porcentagem)
           
         });
         promise.catch((erro) => {
@@ -83,6 +89,7 @@ export default function Today() {
        
        
         let novoMap = today.map((tarefas , index)=>{
+            
             if(index === indexDia){
                 return{
                        ...tarefas,
@@ -97,9 +104,12 @@ export default function Today() {
             }
             
         })
+        
+      
         setToday(novoMap)
        setTarefa(id)
        setDoneState(true)
+   
     }
 
 
