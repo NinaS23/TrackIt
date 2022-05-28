@@ -239,6 +239,7 @@ console.log(load)
     }
     
     function RemoveHabito(IdHabit){
+        console.log(IdHabit)
         const mostrar = window.confirm(
             "Tem certeza que deseja apagar o hábito?"
           );
@@ -262,6 +263,7 @@ console.log(load)
     const MontarSemana = DiasDaSemana()
 
     function HabitosFinais({nome , dias, id}){
+       
         return(
             <Tabela>
             <h2>{nome}</h2>
@@ -309,9 +311,10 @@ console.log(load)
                       S
                     </Sabado>
             </Semana>
-            <img  onClick={() => RemoveHabito(id.id)} src="assets/imgs/trash.png" alt="lixo" />
+            <img  onClick={() => RemoveHabito(id)} src="assets/imgs/trash.png" alt="lixo" />
         </Tabela>
         )
+       
     }
  
 
@@ -403,6 +406,7 @@ if(habitoFeito.length === 0){
                         }} ><h3>+</h3></button>
                     </CreatHabit>
                     {habitoFeito.map((habito, index) => {
+                       
                         return (
                             <HabitosFinais
                                 nome={habito.name}
@@ -410,6 +414,7 @@ if(habitoFeito.length === 0){
                                 id={habito.id}
                             />
                         )
+
                     })}
                 </Habito>
                 <Footer />
