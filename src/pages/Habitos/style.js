@@ -68,13 +68,14 @@ color: #FFFFFF;
 const Habit = styled.div`
 width: 340px;
 height: 180px;
-background: #E7E7E7;
+background: #FFFFFF;
 border-radius: 5px;
 margin-top: 10%;
 display: flex;
 flex-direction: column;
 align-items: center;
 padding-top: 3%;
+margin-bottom: 3%;
 `
 
 const Input = styled.input`
