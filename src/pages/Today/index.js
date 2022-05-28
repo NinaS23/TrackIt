@@ -4,6 +4,7 @@ import Footer from "../../componentes/Footer/index.js";
 import Header from "../../componentes/Header/index.js";
 import UsuarioContext from "../../providers/usuarioContext.js";
 import Habitos from "../Habitos/index.js";
+import dayjs from "dayjs";
 import { Container, SubTitulo, False ,SequenciaTrue,  Sequencia, Legenda , Hoje , ContainerHOje , Titulo ,Imagem , Div} from "./style.js";
 
 export default function Today() {
@@ -44,7 +45,8 @@ export default function Today() {
     }, [])
 
 
-    useEffect(() => {
+   
+        function enviarTarefas ({tarefa , doneState}){
         if(doneState === true){
         const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${tarefa}/check`
         const promise = axios.post(URL,{}, config)
@@ -67,7 +69,8 @@ export default function Today() {
             console.log(erro)
         })
     }
-    }, [])
+}
+  
 
 
 
@@ -99,8 +102,6 @@ export default function Today() {
        setDoneState(true)
     }
 
-console.log(doneState)
-
 
 
 
@@ -118,7 +119,7 @@ console.log(doneState)
                     </Sequencia>
 
                     <False onClick={() => Selecionado(index , id , done)}>
-                        <Imagem src="assets/imgs/check.png" alt="check" />
+                        <Imagem onClick={() => enviarTarefas()} src="assets/imgs/check.png" alt="check" />
                     </False>
                 </Hoje>
             )
@@ -159,8 +160,6 @@ console.log(doneState)
                     <Legenda>Nenhum hábito concluído ainda</Legenda>
                     <ContainerHOje>
                         {today.map((item, index) => {
-                          
-                       
                             return (
                                 <RetornaTarefas
                                 done={item.done} 
