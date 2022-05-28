@@ -61,7 +61,7 @@ const Hoje = styled.div`
 position: relative;
 height: 120px;
 width: 340px;
-background-color:  #E5E5E5;
+background-color:  #FFFFFF;
 margin-top:3%;
 padding-bottom: 50px;
 
@@ -155,6 +155,14 @@ const Imagem = styled.img`
 margin: 0 auto;
 
 `
+const Corpo = styled.body`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e5e5e5;
+  padding: 28px 22px 70px 15px;
+`;
+
 export{
     Container,
     SubTitulo,
@@ -168,5 +176,6 @@ export{
     Div,
     False,
     Sequencia,
-    SequenciaTrue
+    SequenciaTrue,
+    Corpo
     }

@@ -22,7 +22,7 @@ align-items: center;
 const CreatHabit = styled.div`
 width: 340px;
 height: 60px;
-background: #FFFFFF;
+background: #E5E5E5;
 border-radius: 5px;
 display: flex;
 justify-content: space-between;
@@ -277,14 +277,35 @@ margin-top: 14%;
 const Tabela = styled.div`
 display: flex;
 flex-direction: column;
+padding-left: 5%;
+padding-top: 3%;
 margin-top:7px;
-background-color: E5E5E5;
+background-color: #FFFFFF;
+width: 340px;
+height: 91px;
 img{
-margin-top :5%;
+margin-bottom :5%;
 width:13px;
 height: 15px;
-margin-left: 98%;
+margin-left: 90%;
   
+}
+h2{
+  width: 208px;
+height: 25px;
+left: 32px;
+top: 160px;
+
+font-family: 'Lexend Deca';
+font-style: normal;
+font-weight: 400;
+font-size: 19.976px;
+line-height: 25px;
+/* identical to box height */
+
+
+color: #666666;
+
 }
 
 

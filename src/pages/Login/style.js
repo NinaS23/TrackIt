@@ -55,11 +55,22 @@ text-align: center;
 text-decoration-line: underline;
 color: #52B6FF;
 `
+const Corpo = styled.body`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFFFFF;
+  padding: 28px 22px 70px 15px;
+`;
+
+
+
 export {
     LogoCenter,
     Logo,
     Input,
     Botao,
     Entrar,
-    LinkLogin
+    LinkLogin,
+    Corpo
   }

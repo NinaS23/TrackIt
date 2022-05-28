@@ -60,6 +60,14 @@ justify-content: center;
 flex-direction: column;
 align-items: center;
 `
+const Corpo = styled.body`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFFFFF;
+  padding: 28px 22px 70px 15px;
+`;
+
 export{
     CadastroLogo,
     LogoCadastro,
@@ -67,5 +75,6 @@ export{
     Botao,
     Cadastrar,
     LinkCadastro,
-    Form
+    Form,
+    Corpo
 }
